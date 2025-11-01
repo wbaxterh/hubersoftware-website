@@ -134,7 +134,8 @@ export default function PDFMergerPage() {
 
     } catch (error) {
       console.error('Merge failed:', error);
-      alert(`Failed to merge files: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      alert(`Failed to merge files: ${errorMessage}`);
     } finally {
       setIsProcessing(false);
     }
