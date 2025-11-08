@@ -118,7 +118,7 @@ export default function PDFMergerPage() {
       // Make API call to backend (Lambda or local Flask)
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8002';
       const isLocalhost = apiUrl.includes('localhost');
-      const mergeEndpoint = isLocalhost ? '/api/merge' : '/merge';
+      const mergeEndpoint = isLocalhost ? '/api/merge' : '/pdf-merger/merge';
 
       const response = await fetch(`${apiUrl}${mergeEndpoint}`, {
         method: 'POST',
@@ -160,7 +160,7 @@ export default function PDFMergerPage() {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8002';
       const isLocalhost = apiUrl.includes('localhost');
-      const healthEndpoint = isLocalhost ? '/api/health' : '/health';
+      const healthEndpoint = isLocalhost ? '/api/health' : '/pdf-merger/health';
 
       const response = await fetch(`${apiUrl}${healthEndpoint}`, {
         method: 'GET',
