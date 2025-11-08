@@ -21,6 +21,7 @@ export default function PDFMergerPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  const [apiStatus, setApiStatus] = useState<'unknown' | 'checking' | 'healthy' | 'error'>('unknown');
 
   const formatFileSize = (bytes: number): string => {
     if (bytes === 0) return '0 Bytes';
@@ -114,8 +115,8 @@ export default function PDFMergerPage() {
       formData.append('pageSize', 'fit'); // Default page size
       formData.append('compress', 'false'); // Default compression
 
-      // Make API call to Flask backend
-      const apiUrl = process.env.NEXT_PUBLIC_PDF_API_URL || 'http://localhost:8002';
+      // Make API call to Lambda backend
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8002';
       const response = await fetch(`${apiUrl}/api/merge`, {
         method: 'POST',
         body: formData
@@ -148,6 +149,27 @@ export default function PDFMergerPage() {
     setDownloadUrl(null);
     if (downloadUrl) {
       window.URL.revokeObjectURL(downloadUrl);
+    }
+  };
+
+  const testApiConnection = async () => {
+    setApiStatus('checking');
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8002';
+      const response = await fetch(`${apiUrl}/api/health`, {
+        method: 'GET',
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('API Health Check:', data);
+        setApiStatus('healthy');
+      } else {
+        setApiStatus('error');
+      }
+    } catch (error) {
+      console.error('API Health Check failed:', error);
+      setApiStatus('error');
     }
   };
 
@@ -190,8 +212,30 @@ export default function PDFMergerPage() {
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Combine multiple PDF files and images into a single PDF document.
-            Completely free and secure - all processing happens in your browser.
+            High-quality processing powered by our secure cloud API.
           </p>
+
+          {/* API Status Indicator */}
+          <div className="flex items-center justify-center mt-4 space-x-3">
+            <div className={`w-3 h-3 rounded-full ${
+              apiStatus === 'healthy' ? 'bg-green-500' :
+              apiStatus === 'checking' ? 'bg-yellow-500 animate-pulse' :
+              apiStatus === 'error' ? 'bg-red-500' : 'bg-gray-300'
+            }`}></div>
+            <span className="text-sm text-gray-600">
+              {apiStatus === 'healthy' ? 'API Connected' :
+               apiStatus === 'checking' ? 'Checking API...' :
+               apiStatus === 'error' ? 'API Error' : 'API Status Unknown'}
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={testApiConnection}
+              disabled={apiStatus === 'checking'}
+            >
+              Test Connection
+            </Button>
+          </div>
         </div>
 
         {/* Upload Area */}
