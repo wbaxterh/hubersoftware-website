@@ -115,9 +115,12 @@ export default function PDFMergerPage() {
       formData.append('pageSize', 'fit'); // Default page size
       formData.append('compress', 'false'); // Default compression
 
-      // Make API call to Lambda backend
+      // Make API call to backend (Lambda or local Flask)
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8002';
-      const response = await fetch(`${apiUrl}/api/merge`, {
+      const isLocalhost = apiUrl.includes('localhost');
+      const mergeEndpoint = isLocalhost ? '/api/merge' : '/merge';
+
+      const response = await fetch(`${apiUrl}${mergeEndpoint}`, {
         method: 'POST',
         body: formData
       });
@@ -156,7 +159,10 @@ export default function PDFMergerPage() {
     setApiStatus('checking');
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8002';
-      const response = await fetch(`${apiUrl}/api/health`, {
+      const isLocalhost = apiUrl.includes('localhost');
+      const healthEndpoint = isLocalhost ? '/api/health' : '/health';
+
+      const response = await fetch(`${apiUrl}${healthEndpoint}`, {
         method: 'GET',
       });
 
