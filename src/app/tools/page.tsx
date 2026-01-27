@@ -65,6 +65,42 @@ export default function ToolsPage() {
               </Button>
             </div>
 
+            {/* NDA E-Signature Tool */}
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 2v5a2 2 0 002 2h5" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">NDA E-Signature</h3>
+              <p className="text-gray-600 mb-6">
+                Sign Non-Disclosure Agreements electronically. Secure, legally compliant, with full audit trail
+                and automatic PDF generation.
+              </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  Typed electronic signature
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  SHA-256 document integrity
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  Full audit trail included
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                  Email confirmation & PDF copy
+                </div>
+              </div>
+              <Button asChild className="w-full">
+                <Link href="/nda-sign">Sign NDA</Link>
+              </Button>
+            </div>
+
             {/* Coming Soon Tools */}
             <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 opacity-75">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">

@@ -193,7 +193,7 @@ export default function AboutPage() {
                 4
               </div>
               <div className="ml-6">
-                <h3 className="text-lg font-semibold text-gray-900">HuberSoftware Launch (2024)</h3>
+                <h3 className="text-lg font-semibold text-gray-900">HuberSoftware Launch (2024-Present)</h3>
                 <p className="text-gray-600 mt-2">
                   Founded HuberSoftware to combine deep technical expertise with product management
                   experience, offering comprehensive software solutions that drive business success.
