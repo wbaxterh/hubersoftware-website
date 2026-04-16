@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -7,14 +8,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center mb-4">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                <div className="w-4 h-4 bg-white rounded-sm"></div>
-              </div>
-              <span className="text-xl font-bold">
-                <span className="text-blue-400">Huber</span>Software
-              </span>
-            </div>
+            <Link href="/" className="mb-4 inline-flex items-center">
+              <Image
+                src="/logo.png"
+                alt="HuberSoftware"
+                width={472}
+                height={390}
+                className="h-16 w-auto"
+              />
+            </Link>
             <p className="text-gray-400 mb-4 max-w-md">
               Professional tech and software solutions with over 10 years of experience.
               Building innovative applications that drive business success.

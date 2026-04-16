@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -7,9 +8,16 @@ export default function Home() {
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <section className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            <span className="text-blue-600">Huber</span>Software
-          </h1>
+          <div className="mb-6 flex justify-center">
+            <Image
+              src="/logo.png"
+              alt="HuberSoftware"
+              width={472}
+              height={390}
+              priority
+              className="h-auto w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[440px]"
+            />
+          </div>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Professional tech and software solutions built with precision and expertise.
             Full-stack development, mobile apps, and blockchain technology.
