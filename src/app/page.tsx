@@ -1,89 +1,277 @@
-import Image from "next/image";
+import { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import {
+  Blueprint,
+  Kicker,
+  PrimaryCta,
+  SecondaryCta,
+  SectionHeader,
+} from "@/components/brand/datum";
+import { STATS } from "@/lib/stats";
+import { SITE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: `${SITE.name} | Enterprise Grade Software for Teams That Are Not Enterprises Yet`,
+  description:
+    "A three person product team. Wes builds the software, Kat builds the brand, Tripp builds the pipeline. Product engineering, AI engineering, and white label development from Winston-Salem, North Carolina.",
+  alternates: { canonical: "/" },
+};
+
+const TRUSTED_BY = [
+  "Bluegrass Damage Appraisal",
+  "TechInnovators",
+  "Interact Brands",
+  "The Trick Book",
+];
+
+const WORK = [
+  {
+    kicker: "CLIENT PLATFORM",
+    title: "Bluegrass Damage Appraisal",
+    href: "/work/bluegrass-damage-appraisal",
+    label: "CLAIMS PLATFORM",
+    body: "A claim management platform built over six months. One backend API, three separate user portals for appraisers, adjusters and clients, AWS infrastructure and CI/CD pipelines that let us ship the same day a problem shows up.",
+  },
+  {
+    kicker: "OUR PRODUCT",
+    title: "The Trick Book",
+    href: "/work/trick-book",
+    label: "TRICK BOOK APP",
+    body: "A trick progression platform for skateboarders, snowboarders, BMX riders and surfers. Live on the App Store and Google Play, with a spot map of 3,800+ locations and AI companions that know your progression.",
+  },
+  {
+    kicker: "CLIENT PLATFORM",
+    title: "AI Support Platform",
+    href: "/work/ai-support-platform",
+    label: "AI PLATFORM",
+    body: "A production LangGraph orchestrator for a consumer software company. Retrieval over their docs, voice and live chat channels, secure account operations through MCP, and evals that catch quality slips before customers do.",
+  },
+];
+
+const TEAM = [
+  {
+    name: "Wes Huber",
+    role: "FOUNDER, SOFTWARE AND AI",
+    body: "Formally trained software engineer, product manager and AI engineer. Ten years of taking things from a sketch to a production platform other people depend on. He does the architecture, writes the code and owns the deploy.",
+    photoLabel: "PHOTO OF WES",
+  },
+  {
+    name: "Kathleen Huber",
+    role: "BRAND AND MARKETING",
+    body: "Kat makes sure the thing we build is something people understand and want. Positioning, naming, brand system, launch copy and the campaigns after launch.",
+    photoLabel: "PHOTO OF KAT",
+  },
+  {
+    name: "Tripp Huber",
+    role: "PARTNERSHIPS AND SALES",
+    body: "Tripp finds the partners and the customers. If your product needs distribution as much as it needs code, this is the part most engineering firms cannot help you with.",
+    photoLabel: "PHOTO OF TRIPP",
+  },
+];
+
+const REVIEWS = [
+  {
+    quote:
+      "Wes built out a substantial full-stack platform over a six-month engagement, including backend API, three user portals, AWS infrastructure, and CI/CD pipelines. He was responsive to feedback and willing to put in long hours when production issues came up.",
+    name: "Cody Underwood",
+    org: "Bluegrass Damage Appraisal",
+  },
+  {
+    quote:
+      "Wes is a highly engaged and sharp developer who proactively analyzes systems and naturally looks for optimizations.",
+    name: "Armando Farr",
+    org: "TechInnovators",
+  },
+  {
+    quote:
+      "Wes has fantastic web development skills and web development knowledge. I am happy with his work on both my websites.",
+    name: "Verified client",
+    org: "Two website builds",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <section className="text-center mb-16">
-          <div className="mb-6 flex justify-center">
-            <Image
-              src="/logo.png"
-              alt="HuberSoftware"
-              width={472}
-              height={390}
-              priority
-              className="h-auto w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[440px]"
-            />
-          </div>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Professional tech and software solutions built with precision and expertise.
-            Full-stack development, mobile apps, and blockchain technology.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg">
-              <Link href="/services">View Services</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/contact">Contact Us</Link>
-            </Button>
-          </div>
-        </section>
-
-        {/* Services Preview */}
-        <section className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
+    <div className="flex flex-col">
+      {/* Hero */}
+      <section className="mx-auto w-full max-w-6xl px-5 pb-20 pt-16 md:px-10 md:pb-[88px] md:pt-[108px]">
+        <div className="grid items-end gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-[72px]">
+          <div className="flex flex-col gap-7">
+            <Kicker className="tracking-label">
+              Product engineering &nbsp;/&nbsp; {SITE.locationLine}
+            </Kicker>
+            <h1 className="font-heading text-5xl font-semibold leading-[1.02] md:text-6xl lg:text-[74px]">
+              Enterprise grade software for teams that are not enterprises yet.
+            </h1>
+            <p className="max-w-lg text-lg leading-[1.7] text-neutral-700">
+              We are a family of three who cover a whole product between us.
+              Wes builds it, Kat gives it a brand and an audience, Tripp opens
+              the doors. You get a working platform in production, not a
+              prototype and an invoice.
+            </p>
+            <div className="flex flex-wrap items-center gap-5">
+              <PrimaryCta href="/contact">Book a call with Wes</PrimaryCta>
+              <SecondaryCta href="/services">See what we do</SecondaryCta>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Full-Stack Web Development</h3>
-            <p className="text-gray-600">
-              Modern web applications built with cutting-edge technologies.
-              From concept to deployment, we handle the entire development lifecycle.
+          </div>
+
+          <Blueprint className="flex flex-col divide-y divide-divider bg-divider">
+            {STATS.map((s) => (
+              <Link
+                key={s.label}
+                href={s.sourceUrl}
+                className="flex flex-col gap-1.5 bg-ground px-6 py-6 transition-colors hover:bg-surface"
+                {...(s.sourceUrl.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                <div className="font-heading text-4xl font-semibold leading-none text-steel-700">
+                  {s.value}
+                </div>
+                <div className="text-[13.5px] leading-snug text-neutral-600">
+                  {s.label}
+                </div>
+              </Link>
+            ))}
+          </Blueprint>
+        </div>
+      </section>
+
+      {/* Trusted by */}
+      <section className="border-y border-divider bg-surface">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-10 gap-y-3 px-5 py-6 md:px-10">
+          <span className="font-heading text-[10.5px] font-semibold uppercase tracking-kicker text-neutral-600">
+            Trusted by
+          </span>
+          {TRUSTED_BY.map((name, i) => (
+            <span key={name} className="flex items-center gap-10">
+              <span className="text-[15px] text-neutral-700">{name}</span>
+              {i < TRUSTED_BY.length - 1 && (
+                <span className="hidden h-3.5 w-px bg-divider sm:block" />
+              )}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Selected work */}
+      <section className="mx-auto w-full max-w-6xl px-5 py-20 md:px-10 md:py-24">
+        <SectionHeader
+          kicker="Selected work"
+          title="Three things we built and still maintain."
+        />
+        <div className="mt-12 grid gap-7 md:grid-cols-3">
+          {WORK.map((w) => (
+            <Link key={w.title} href={w.href} className="group flex flex-col gap-4">
+              <Blueprint className="hatch flex aspect-[4/3] items-end p-4">
+                <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
+                  {w.label}
+                </span>
+              </Blueprint>
+              <div className="flex flex-col gap-2">
+                <div className="font-heading text-[10px] font-semibold tracking-kicker text-steel-700">
+                  {w.kicker}
+                </div>
+                <h3 className="font-heading text-2xl leading-tight transition-colors group-hover:text-steel-700">
+                  {w.title}
+                </h3>
+                <p className="text-[14.5px] leading-[1.7] text-neutral-700">
+                  {w.body}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="bg-steel-900 text-ground">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-24">
+          <div className="grid gap-4 md:grid-cols-[200px_1fr] md:items-end md:gap-12">
+            <div className="font-heading text-[11px] font-semibold uppercase tracking-kicker text-steel-400">
+              The team
+            </div>
+            <h2 className="max-w-xl font-heading text-3xl font-semibold leading-tight md:text-[40px]">
+              You will know all three of us by name.
+            </h2>
+          </div>
+          <div className="mt-14 grid gap-9 sm:grid-cols-2 lg:grid-cols-3">
+            {TEAM.map((m) => (
+              <div key={m.name} className="flex flex-col gap-4">
+                <Blueprint
+                  light
+                  className="hatch-dark flex aspect-square items-end border-ground/20 p-4"
+                >
+                  <span className="font-heading text-[10px] tracking-wordmark text-neutral-500">
+                    {m.photoLabel}
+                  </span>
+                </Blueprint>
+                <div className="flex flex-col gap-2">
+                  <h3 className="font-heading text-2xl">{m.name}</h3>
+                  <div className="font-heading text-[10px] font-semibold tracking-kicker text-steel-400">
+                    {m.role}
+                  </div>
+                  <p className="text-[14.5px] leading-[1.7] text-neutral-400">
+                    {m.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="mx-auto w-full max-w-6xl px-5 py-20 md:px-10 md:py-24">
+        <SectionHeader kicker="In their words" title="What clients actually said." />
+        <Blueprint className="mt-12 grid gap-px bg-divider md:grid-cols-3">
+          {REVIEWS.map((r) => (
+            <div
+              key={r.name}
+              className="flex flex-col justify-between gap-6 bg-ground p-8"
+            >
+              <p className="font-heading text-xl font-semibold leading-normal">
+                {r.quote}
+              </p>
+              <div>
+                <div className="text-sm font-medium">{r.name}</div>
+                <div className="mt-1 text-[13px] text-neutral-600">{r.org}</div>
+              </div>
+            </div>
+          ))}
+        </Blueprint>
+        <p className="mt-5 text-[13.5px] text-neutral-600">
+          Quotes are from verified reviews on{" "}
+          <a
+            href="https://www.upwork.com/freelancers/~01387050d017e0878f"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-steel-700 underline underline-offset-4"
+          >
+            Wes&apos;s Upwork profile
+          </a>
+          , where the rating is 5.0 across 86 jobs.
+        </p>
+      </section>
+
+      {/* CTA band */}
+      <section className="border-t border-divider bg-surface">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-10 px-5 py-16 md:px-10 md:py-[88px]">
+          <div className="flex max-w-xl flex-col gap-3.5">
+            <h2 className="font-heading text-3xl font-semibold leading-tight md:text-[40px]">
+              Tell us what you are trying to ship.
+            </h2>
+            <p className="text-base leading-[1.7] text-neutral-700">
+              Thirty minutes with Wes, no deck, no discovery fee. You will
+              leave with a straight answer on scope, cost and whether we are
+              the right shop for it.
             </p>
           </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Mobile App Development</h3>
-            <p className="text-gray-600">
-              iOS and Android applications that deliver exceptional user experiences.
-              Native and cross-platform solutions tailored to your needs.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Blockchain Development</h3>
-            <p className="text-gray-600">
-              Web3 applications and smart contracts for the decentralized future.
-              DeFi, NFTs, and custom blockchain solutions.
-            </p>
-          </div>
-        </section>
-
-        {/* About Preview */}
-        <section className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">About HuberSoftware</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Founded by <strong>Wes Huber</strong>, a software engineer and product manager with over 10 years
-            of experience building innovative solutions. We specialize in creating robust, scalable software
-            that drives business success.
-          </p>
-        </section>
-      </div>
+          <PrimaryCta href="/contact" className="px-9 py-[18px] text-base">
+            Book a call
+          </PrimaryCta>
+        </div>
+      </section>
     </div>
   );
 }

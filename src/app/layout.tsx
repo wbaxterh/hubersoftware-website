@@ -1,44 +1,67 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { JsonLd, orgGraph } from "@/components/seo/json-ld";
+import { SITE } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"] });
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hubersoftware.com"),
-  title: "HuberSoftware - Tech & Software Solutions",
-  description: "Professional software development services including full-stack web development, mobile apps, and blockchain solutions. Founded by Wes Huber with 10+ years experience.",
-  keywords: "software development, web development, mobile apps, blockchain, full-stack developer, tech solutions",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: `${SITE.name} | Product Engineering, AI, and White Label Development`,
+    template: `%s | ${SITE.name}`,
+  },
+  description: SITE.description,
   authors: [{ name: "Wes Huber" }],
-  creator: "HuberSoftware",
-  publisher: "HuberSoftware",
+  creator: SITE.name,
+  publisher: SITE.legalName,
+  alternates: {
+    canonical: "/",
+  },
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon-48.png",
+    apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "HuberSoftware - Tech & Software Solutions",
-    description: "Professional software development services including full-stack web development, mobile apps, and blockchain solutions.",
-    url: "https://hubersoftware.com",
-    siteName: "HuberSoftware",
+    title: `${SITE.name} | ${SITE.tagline}`,
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.name,
     type: "website",
     images: [
       {
-        url: "/logo.png",
-        width: 472,
-        height: 390,
-        alt: "HuberSoftware logo",
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE.name}: ${SITE.tagline}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HuberSoftware - Tech & Software Solutions",
-    description: "Professional software development services including full-stack web development, mobile apps, and blockchain solutions.",
-    images: ["/logo.png"],
+    title: `${SITE.name} | ${SITE.tagline}`,
+    description: SITE.description,
+    images: ["/og.png"],
   },
   robots: {
     index: true,
@@ -56,12 +79,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable}`}>
+      <body className="font-body">
+        <JsonLd data={orgGraph()} />
         <Header />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

@@ -1,89 +1,99 @@
-import Image from "next/image";
 import Link from "next/link";
+import { HuberLogo } from "@/components/brand/logo";
+import { SITE } from "@/lib/site";
+
+const COMPANY_LINKS = [
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
+  { name: "Tools", href: "/tools" },
+  { name: "Contact", href: "/contact" },
+];
+
+const SERVICE_LINKS = [
+  { name: "Product engineering", href: "/services#product-engineering" },
+  { name: "White label engineering", href: "/services#white-label" },
+  { name: "AI engineering", href: "/services#ai-engineering" },
+  { name: "Mobile and web3", href: "/services#mobile-apps" },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="mb-4 inline-flex items-center">
-              <Image
-                src="/logo.png"
-                alt="HuberSoftware"
-                width={472}
-                height={390}
-                className="h-16 w-auto"
-              />
+    <footer className="bg-steel-900 text-ground">
+      <div className="mx-auto max-w-6xl px-5 pb-10 pt-16 md:px-10 md:pt-[72px]">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-5">
+            <Link href="/" aria-label="Huber Software home">
+              <HuberLogo size={28} variant="inverse" />
             </Link>
-            <p className="text-gray-400 mb-4 max-w-md">
-              Professional tech and software solutions with over 10 years of experience.
-              Building innovative applications that drive business success.
-            </p>
-            <p className="text-gray-400 text-sm">
-              Founded by Wes Huber • Software Engineer & Product Manager
+            <p className="max-w-xs text-[14.5px] leading-relaxed text-neutral-400">
+              A family of three covering engineering, brand and sales. Ten
+              years of production software behind it.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-gray-400 hover:text-white transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/tools" className="text-gray-400 hover:text-white transition-colors">
-                  Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
+          <div className="flex flex-col gap-3.5">
+            <div className="font-heading text-[10px] font-semibold tracking-kicker text-neutral-500">
+              COMPANY
+            </div>
+            {COMPANY_LINKS.map((l) => (
+              <Link
+                key={l.name}
+                href={l.href}
+                className="text-[14.5px] text-neutral-400 transition-colors hover:text-ground"
+              >
+                {l.name}
+              </Link>
+            ))}
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <span className="text-gray-400">Web Development</span>
-              </li>
-              <li>
-                <span className="text-gray-400">Mobile Apps</span>
-              </li>
-              <li>
-                <span className="text-gray-400">Blockchain Development</span>
-              </li>
-              <li>
-                <span className="text-gray-400">Technical Consulting</span>
-              </li>
-            </ul>
+          <div className="flex flex-col gap-3.5">
+            <div className="font-heading text-[10px] font-semibold tracking-kicker text-neutral-500">
+              SERVICES
+            </div>
+            {SERVICE_LINKS.map((l) => (
+              <Link
+                key={l.name}
+                href={l.href}
+                className="text-[14.5px] text-neutral-400 transition-colors hover:text-ground"
+              >
+                {l.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-3.5">
+            <div className="font-heading text-[10px] font-semibold tracking-kicker text-neutral-500">
+              GET IN TOUCH
+            </div>
+            <a
+              href={`mailto:${SITE.email}`}
+              className="text-[14.5px] text-neutral-400 transition-colors hover:text-ground"
+            >
+              {SITE.email}
+            </a>
+            <span className="text-[14.5px] text-neutral-400">
+              {SITE.locationLine}
+            </span>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} HuberSoftware. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Privacy Policy
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-6 border-t border-ground/20 pt-6">
+          <div className="font-heading text-[10.5px] tracking-wordmark text-neutral-500">
+            © {new Date().getFullYear()} HUBER SOFTWARE LLC
+          </div>
+          <div className="flex gap-7">
+            <Link
+              href="/privacy"
+              className="text-[13px] text-neutral-500 transition-colors hover:text-ground"
+            >
+              Privacy
             </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Terms of Service
+            <Link
+              href="/terms"
+              className="text-[13px] text-neutral-500 transition-colors hover:text-ground"
+            >
+              Terms
             </Link>
           </div>
         </div>

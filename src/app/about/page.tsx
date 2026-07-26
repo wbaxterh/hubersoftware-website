@@ -1,208 +1,155 @@
 import { Metadata } from "next";
+import { Blueprint, Kicker } from "@/components/brand/datum";
 
 export const metadata: Metadata = {
-  title: "About - HuberSoftware",
-  description: "Learn about Wes Huber and HuberSoftware's mission to deliver exceptional software solutions with over 10 years of experience in software engineering and product management.",
+  title: "About | A Family Shop With an Enterprise Habit",
+  description:
+    "Huber Software is Wes, Kat and Tripp Huber: engineering, brand and sales as one accountable team in Winston-Salem, North Carolina. Here is how an engagement runs.",
+  alternates: { canonical: "/about" },
 };
+
+const PROCESS = [
+  {
+    n: "01",
+    title: "Scope in a week",
+    body: "A written architecture, a build order and a number. Yours to keep whether or not you hire us.",
+  },
+  {
+    n: "02",
+    title: "Build in the open",
+    body: "Two week increments, a live staging URL from week one, and a standing call so nothing is a surprise.",
+  },
+  {
+    n: "03",
+    title: "Launch properly",
+    body: "Production infrastructure, monitoring, and Kat on the brand and the announcement if you want it.",
+  },
+  {
+    n: "04",
+    title: "Stay or hand off",
+    body: "We keep maintaining it, or we document it and train your team. Both are fine. Hostage taking is not a business model.",
+  },
+];
+
+const TEAM = [
+  {
+    name: "Wes Huber",
+    role: "FOUNDER, SOFTWARE AND AI",
+    body: "Software engineer, product manager and AI engineer. Ten years of production work across web, mobile and blockchain. Rated five stars by clients on every platform engagement.",
+    photoLabel: "PHOTO OF WES",
+    links: [
+      { label: "GitHub", href: "https://github.com/wbaxterh" },
+      {
+        label: "Upwork",
+        href: "https://www.upwork.com/freelancers/~01387050d017e0878f",
+      },
+    ],
+  },
+  {
+    name: "Kathleen Huber",
+    role: "BRAND AND MARKETING",
+    body: "Positioning, brand systems and go to market. Kat writes the words your customers read and builds the campaigns that get them there.",
+    photoLabel: "PHOTO OF KAT",
+    links: [],
+  },
+  {
+    name: "Tripp Huber",
+    role: "PARTNERSHIPS AND SALES",
+    body: "Channel partnerships, reseller relationships and direct sales. Tripp is why several of our builds had customers waiting on day one.",
+    photoLabel: "PHOTO OF TRIPP",
+    links: [],
+  },
+];
 
 export default function AboutPage() {
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
-              About <span className="text-blue-600">HuberSoftware</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Building innovative software solutions with precision, expertise, and a passion for technology.
-              Founded on the principles of quality, innovation, and client success.
-            </p>
-          </div>
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-5 py-20 md:gap-[88px] md:px-10 md:py-24">
+      {/* Intro */}
+      <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-[72px]">
+        <div className="flex flex-col gap-6">
+          <Kicker className="tracking-label">About</Kicker>
+          <h1 className="font-heading text-5xl font-semibold leading-[1.05] md:text-6xl">
+            A family shop with an enterprise habit.
+          </h1>
         </div>
-      </section>
-
-      {/* Founder Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Meet Wes Huber</h2>
-              <div className="space-y-4 text-gray-600">
-                <p>
-                  With over <strong>10 years of experience</strong> as a software engineer and product manager,
-                  Wes Huber founded HuberSoftware to bridge the gap between complex technical challenges
-                  and innovative business solutions.
-                </p>
-                <p>
-                  His journey began with a passion for creating efficient, scalable software that makes a
-                  real difference. From startup environments to enterprise-level projects, Wes has
-                  consistently delivered high-quality solutions that drive business growth and success.
-                </p>
-                <p>
-                  As both a technical expert and strategic thinker, Wes brings a unique perspective to
-                  every project, ensuring that technology serves not just functionality, but business
-                  objectives and user experience.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Expertise & Experience</h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Software Engineering</h4>
-                    <p className="text-gray-600 text-sm">Full-stack development, system architecture, and performance optimization</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Product Management</h4>
-                    <p className="text-gray-600 text-sm">Strategic planning, agile methodologies, and cross-functional team leadership</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Technology Leadership</h4>
-                    <p className="text-gray-600 text-sm">Technical decision-making, team mentoring, and innovation strategy</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Client Relations</h4>
-                    <p className="text-gray-600 text-sm">Requirement analysis, project delivery, and long-term partnerships</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="flex flex-col gap-5 text-[17px] leading-[1.75] text-neutral-700 lg:pt-12">
+          <p>
+            Huber Software started because Wes kept getting hired to rescue
+            software that had been built to demo, not to run. Somebody had
+            shipped a pretty front end with no tests, no pipeline and no plan
+            for the second thousand users. Fixing that costs more than doing
+            it properly the first time.
+          </p>
+          <p>
+            So we work the way a real product team works. Architecture first,
+            then the build, then the deploy pipeline, then the brand and the
+            launch. We use AI heavily in how we build, which is why a team of
+            three can move at the pace of a much larger one, but the
+            discipline underneath is ordinary enterprise practice. Reviewed
+            code, versioned infrastructure, monitoring, documentation you can
+            hand to the next person.
+          </p>
+          <p>
+            We are small on purpose. You talk to the people doing the work,
+            every time.
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* Values Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The principles that guide every project and client relationship at HuberSoftware.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+      {/* Process */}
+      <div className="flex flex-col gap-8">
+        <Kicker>How an engagement runs</Kicker>
+        <Blueprint className="grid gap-px bg-divider sm:grid-cols-2 lg:grid-cols-4">
+          {PROCESS.map((step) => (
+            <div key={step.n} className="flex flex-col gap-3 bg-ground px-7 py-8">
+              <div className="font-heading text-[10.5px] font-semibold tracking-kicker text-steel-700">
+                {step.n}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Quality First</h3>
-              <p className="text-gray-600">
-                Every line of code, every feature, and every solution is crafted with attention to detail
-                and commitment to excellence.
+              <div className="font-heading text-[22px]">{step.title}</div>
+              <p className="text-[14.5px] leading-[1.7] text-neutral-700">
+                {step.body}
               </p>
             </div>
+          ))}
+        </Blueprint>
+      </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+      {/* Team */}
+      <div className="grid gap-9 sm:grid-cols-2 lg:grid-cols-3">
+        {TEAM.map((m) => (
+          <div key={m.name} className="flex flex-col gap-4">
+            <Blueprint className="hatch flex aspect-[4/5] items-end p-4">
+              <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
+                {m.photoLabel}
+              </span>
+            </Blueprint>
+            <div className="flex flex-col gap-1.5">
+              <div className="font-heading text-2xl">{m.name}</div>
+              <div className="font-heading text-[10px] font-semibold tracking-kicker text-steel-700">
+                {m.role}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Innovation</h3>
-              <p className="text-gray-600">
-                Staying at the forefront of technology to deliver cutting-edge solutions that give our
-                clients a competitive advantage.
+              <p className="mt-1.5 text-[14.5px] leading-[1.7] text-neutral-700">
+                {m.body}
               </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Partnership</h3>
-              <p className="text-gray-600">
-                Building long-term relationships with clients through transparent communication,
-                collaboration, and shared success.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Journey</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              A decade of growth, learning, and delivering exceptional software solutions.
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                1
-              </div>
-              <div className="ml-6">
-                <h3 className="text-lg font-semibold text-gray-900">Early Career & Foundation (2014-2017)</h3>
-                <p className="text-gray-600 mt-2">
-                  Started as a software engineer, building expertise in web development, database design,
-                  and system architecture while working on diverse projects across different industries.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                2
-              </div>
-              <div className="ml-6">
-                <h3 className="text-lg font-semibold text-gray-900">Product Management Transition (2018-2020)</h3>
-                <p className="text-gray-600 mt-2">
-                  Evolved into product management roles, gaining expertise in agile methodologies,
-                  stakeholder management, and strategic product planning while maintaining technical depth.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                3
-              </div>
-              <div className="ml-6">
-                <h3 className="text-lg font-semibold text-gray-900">Technology Leadership (2021-2023)</h3>
-                <p className="text-gray-600 mt-2">
-                  Led engineering teams and complex projects, specializing in blockchain technology,
-                  mobile applications, and scalable web platforms for startups and established companies.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                4
-              </div>
-              <div className="ml-6">
-                <h3 className="text-lg font-semibold text-gray-900">HuberSoftware Launch (2024-Present)</h3>
-                <p className="text-gray-600 mt-2">
-                  Founded HuberSoftware to combine deep technical expertise with product management
-                  experience, offering comprehensive software solutions that drive business success.
-                </p>
-              </div>
+              {m.links.length > 0 && (
+                <div className="mt-2 flex gap-4">
+                  {m.links.map((l) => (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[13.5px] text-steel-700 underline underline-offset-4 hover:text-steel-800"
+                    >
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
     </div>
   );
 }

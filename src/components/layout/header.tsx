@@ -1,99 +1,97 @@
-"use client"
+"use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { HuberLogo } from "@/components/brand/logo";
+
+const NAV = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
+  { name: "Tools", href: "/tools" },
+];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Tools", href: "/tools" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="HuberSoftware"
-                width={472}
-                height={390}
-                priority
-                className="h-11 w-auto sm:h-12"
+    <header className="sticky top-0 z-50 border-b border-divider bg-ground/90 backdrop-blur-md">
+      <div className="mx-auto flex h-[74px] max-w-6xl items-center justify-between gap-8 px-5 md:px-10">
+        <Link href="/" className="flex items-center" aria-label="Huber Software home">
+          <HuberLogo size={28} />
+        </Link>
+
+        {/* Desktop navigation */}
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
+          {NAV.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className="group flex flex-col gap-[5px] text-sm text-ink transition-colors hover:text-steel-700"
+            >
+              {item.name}
+              <span
+                className={`h-px bg-steel transition-opacity ${
+                  isActive(item.href) ? "opacity-100" : "opacity-0 group-hover:opacity-40"
+                }`}
               />
             </Link>
-          </div>
+          ))}
+          <Link
+            href="/contact"
+            className="bg-steel px-5 py-2.5 font-heading text-[13.5px] font-semibold text-ground transition-colors hover:bg-steel-600"
+          >
+            Book a call
+          </Link>
+        </nav>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex">
-            <Button asChild>
-              <Link href="/contact">Get Started</Link>
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-4 pb-2">
-                <Button asChild className="w-full">
-                  <Link href="/contact">Get Started</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Mobile menu button */}
+        <button
+          className="flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </div>
+
+      {/* Mobile navigation */}
+      {isMenuOpen && (
+        <nav
+          className="border-t border-divider bg-ground px-5 pb-6 pt-2 md:hidden"
+          aria-label="Mobile"
+        >
+          {NAV.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`block border-b border-divider py-3.5 text-base ${
+                isActive(item.href) ? "text-steel-700" : "text-ink"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-5 block bg-steel px-5 py-3.5 text-center font-heading text-[15px] font-semibold text-ground"
+          >
+            Book a call
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }

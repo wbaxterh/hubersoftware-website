@@ -55,3 +55,5 @@ Thumbs.db
 *~
 *.bak
 *.backup
+# PRD workspace: kept out of the public repo pending the docs/prd publication decision (PRD §13.2)
+docs/

@@ -1,261 +1,176 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Blueprint, Kicker } from "@/components/brand/datum";
 
 export const metadata: Metadata = {
-  title: "Tools - HuberSoftware",
-  description: "Free online tools developed by HuberSoftware. PDF merger, image converters, and other useful utilities for productivity.",
+  title: "Tools and Products | Things We Built Because We Needed Them",
+  description:
+    "Free utilities with no signup, products we run as a business, and open source you can read before you hire us. PDF merger, NDA e-signature, The Trick Book, and public repositories.",
+  alternates: { canonical: "/tools" },
 };
+
+const PRODUCTS = [
+  {
+    title: "The Trick Book",
+    status: "LIVE",
+    href: "https://thetrickbook.com",
+    label: "THE TRICK BOOK SCREENS",
+    body: "A trick progression platform for skateboarders, snowboarders, BMX riders and surfers. React Native apps on both stores, a Next.js web app, and an Express backend on AWS, with a 3,800+ spot map and AI companions.",
+  },
+];
+
+const UTILITIES = [
+  {
+    title: "PDF Merger",
+    href: "/tools/pdf-merger",
+    body: "Combine PDFs, PNGs and JPGs into one document. Drag, drop, download. Files are processed for the merge and not kept.",
+  },
+  {
+    title: "NDA Signing",
+    href: "/nda-sign",
+    body: "Sign a mutual NDA electronically. Typed signature, SHA-256 document integrity, full audit trail, and a PDF copy by email.",
+  },
+];
+
+const REPOS = [
+  {
+    name: "teams2kb",
+    href: "https://github.com/wbaxterh/teams2kb",
+    body: "Retrieval ready exports for Microsoft Teams chats. Markdown and JSONL contracts for RAG pipelines.",
+  },
+  {
+    name: "basilisk",
+    href: "https://github.com/wbaxterh/basilisk",
+    body: "Cardano analytics platform with a free public API and the first hosted MCP server for Cardano market data.",
+  },
+  {
+    name: "kith",
+    href: "https://github.com/wbaxterh/kith",
+    body: "Runtime agnostic voice framework for AI companions, published on npm.",
+  },
+  {
+    name: "pokedocs",
+    href: "https://github.com/wbaxterh/pokedocs",
+    body: "Agent native documentation framework built as a distribution on top of Docusaurus.",
+  },
+];
 
 export default function ToolsPage() {
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
-              Free <span className="text-blue-600">Tools</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Useful online tools developed by HuberSoftware. All tools are free to use,
-              secure, and designed with privacy in mind.
-            </p>
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-5 py-20 md:gap-[72px] md:px-10 md:py-24">
+      {/* Intro */}
+      <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-[72px]">
+        <div className="flex flex-col gap-6">
+          <Kicker className="tracking-label">Tools and products</Kicker>
+          <h1 className="font-heading text-5xl font-semibold leading-[1.05] md:text-6xl">
+            Things we built because we needed them.
+          </h1>
+        </div>
+        <p className="text-[17px] leading-[1.75] text-neutral-700 lg:pt-12">
+          Some of these are free utilities, some are products we run as a
+          business, some are open source. All of them are the same answer to
+          the same question, which is whether we can actually do the thing we
+          say we can do.
+        </p>
+      </div>
+
+      {/* Products */}
+      <div className="flex flex-col gap-8">
+        <Kicker>Our products</Kicker>
+        <div className="grid gap-7 md:grid-cols-2">
+          {PRODUCTS.map((p) => (
+            <Blueprint key={p.title} className="flex flex-col bg-ground">
+              <div className="hatch flex aspect-[16/10] items-end border-b border-divider p-4">
+                <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
+                  {p.label}
+                </span>
+              </div>
+              <div className="flex flex-col gap-2.5 p-7">
+                <div className="flex items-center justify-between gap-4">
+                  <h2 className="font-heading text-[26px]">{p.title}</h2>
+                  <span className="font-heading text-[10px] tracking-wordmark text-steel-700">
+                    {p.status}
+                  </span>
+                </div>
+                <p className="text-[14.5px] leading-[1.7] text-neutral-700">
+                  {p.body}
+                </p>
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 font-heading text-[10.5px] tracking-wordmark text-steel-700 hover:text-steel-800"
+                >
+                  VISIT
+                </a>
+              </div>
+            </Blueprint>
+          ))}
+        </div>
+      </div>
+
+      {/* Free utilities */}
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <Kicker>Free utilities</Kicker>
+          <div className="text-sm text-neutral-600">
+            No signup, no email capture. Use them and go.
           </div>
         </div>
-      </section>
-
-      {/* Tools Grid */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            {/* PDF Merger Tool */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
+        <Blueprint className="grid gap-px bg-divider sm:grid-cols-2">
+          {UTILITIES.map((u) => (
+            <Link
+              key={u.title}
+              href={u.href}
+              className="flex flex-col gap-2.5 bg-ground px-7 py-7 transition-colors hover:bg-surface"
+            >
+              <div className="text-base font-medium">{u.title}</div>
+              <p className="text-sm leading-[1.7] text-neutral-700">{u.body}</p>
+              <div className="mt-1 font-heading text-[10.5px] tracking-wordmark text-steel-700">
+                OPEN
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">PDF Merger</h3>
-              <p className="text-gray-600 mb-6">
-                Combine multiple PDF files into a single document. Supports images and maintains quality.
-                No file size limits, completely free to use.
-              </p>
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  PDF and image support
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  Drag & drop interface
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  No file upload to servers
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  Completely free
-                </div>
-              </div>
-              <Button asChild className="w-full">
-                <Link href="/tools/pdf-merger">Use PDF Merger</Link>
-              </Button>
-            </div>
+            </Link>
+          ))}
+        </Blueprint>
+      </div>
 
-            {/* NDA E-Signature Tool */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 2v5a2 2 0 002 2h5" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">NDA E-Signature</h3>
-              <p className="text-gray-600 mb-6">
-                Sign Non-Disclosure Agreements electronically. Secure, legally compliant, with full audit trail
-                and automatic PDF generation.
-              </p>
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  Typed electronic signature
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  SHA-256 document integrity
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  Full audit trail included
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                  Email confirmation & PDF copy
-                </div>
-              </div>
-              <Button asChild className="w-full">
-                <Link href="/nda-sign">Sign NDA</Link>
-              </Button>
-            </div>
-
-            {/* Coming Soon Tools */}
-            <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 opacity-75">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Image Converter</h3>
-              <p className="text-gray-600 mb-6">
-                Convert images between different formats. Support for PNG, JPG, WebP, and more.
-              </p>
-              <Button disabled className="w-full">
-                Coming Soon
-              </Button>
-            </div>
-
-            <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 opacity-75">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Text Utilities</h3>
-              <p className="text-gray-600 mb-6">
-                Various text processing tools including case conversion, word counting, and formatting.
-              </p>
-              <Button disabled className="w-full">
-                Coming Soon
-              </Button>
-            </div>
-
-            <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 opacity-75">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v18a1 1 0 01-1 1H4a1 1 0 01-1-1V1a1 1 0 011-1h2a1 1 0 011 1v3z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">QR Code Generator</h3>
-              <p className="text-gray-600 mb-6">
-                Generate QR codes for URLs, text, and other data. Customizable size and format options.
-              </p>
-              <Button disabled className="w-full">
-                Coming Soon
-              </Button>
-            </div>
-
-            <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 opacity-75">
-              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Password Generator</h3>
-              <p className="text-gray-600 mb-6">
-                Generate secure passwords with customizable length and character sets.
-              </p>
-              <Button disabled className="w-full">
-                Coming Soon
-              </Button>
-            </div>
-
-            <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 opacity-75">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Developer Tools</h3>
-              <p className="text-gray-600 mb-6">
-                JSON formatter, base64 encoder/decoder, URL encoder, and other developer utilities.
-              </p>
-              <Button disabled className="w-full">
-                Coming Soon
-              </Button>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Use Our Tools?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Built with privacy, security, and user experience in mind.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Privacy Focused</h3>
-              <p className="text-gray-600">
-                Most tools work entirely in your browser. No files uploaded to our servers.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Fast & Efficient</h3>
-              <p className="text-gray-600">
-                Optimized for speed and performance. Process files quickly without delays.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Completely Free</h3>
-              <p className="text-gray-600">
-                All tools are free to use with no hidden costs, subscriptions, or limitations.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Cross-Platform</h3>
-              <p className="text-gray-600">
-                Works on any device with a web browser. Desktop, tablet, or mobile.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Need a Custom Tool?</h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Looking for a specific tool or feature? We can build custom solutions tailored to your needs.
+      {/* Open source */}
+      <div className="flex flex-col gap-8">
+        <Kicker>Open source</Kicker>
+        <Blueprint className="flex flex-wrap items-center justify-between gap-10 bg-surface p-10">
+          <p className="max-w-xl font-heading text-2xl font-semibold leading-normal">
+            Our public repositories are the fastest way to check our work
+            before you talk to us. Read the code, read the commits, then book
+            the call.
           </p>
-          <Button asChild size="lg">
-            <Link href="/contact">Request Custom Tool</Link>
-          </Button>
+          <a
+            href="https://github.com/wbaxterh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-b border-steel-300 pb-1 text-[15px] text-steel-700 transition-colors hover:border-steel-700"
+          >
+            View on GitHub
+          </a>
+        </Blueprint>
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+          {REPOS.map((r) => (
+            <a
+              key={r.name}
+              href={r.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col gap-2 border border-divider p-6 transition-colors hover:bg-surface"
+            >
+              <div className="font-heading text-lg transition-colors group-hover:text-steel-700">
+                {r.name}
+              </div>
+              <p className="text-[13.5px] leading-[1.65] text-neutral-700">
+                {r.body}
+              </p>
+            </a>
+          ))}
         </div>
-      </section>
+      </div>
     </div>
   );
 }
