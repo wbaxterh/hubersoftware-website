@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Blueprint, Kicker } from "@/components/brand/datum";
 import { JsonLd, breadcrumbs } from "@/components/seo/json-ld";
@@ -10,7 +11,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "/work" },
 };
 
-const STUDIES = [
+const STUDIES: Array<{
+  kicker: string;
+  title: string;
+  href: string;
+  label: string;
+  summary: string;
+  facts: string[];
+  image?: string;
+  alt?: string;
+}> = [
   {
     kicker: "CLIENT PLATFORM",
     title: "Bluegrass Damage Appraisal",
@@ -22,12 +32,25 @@ const STUDIES = [
   },
   {
     kicker: "OUR PRODUCT",
+    title: "Helio",
+    href: "/work/helio",
+    label: "HELIO",
+    summary:
+      "AI powered machine monitoring for American manufacturers. Our own industrial IoT product: hardware in the plant, intelligence on top, downtime caught before it costs a shift.",
+    facts: ["INDUSTRIAL IOT", "AI MONITORING", "LIVE"],
+    image: "/work/helio.webp",
+    alt: "helioiot.com homepage: Helio makes machines make sense",
+  },
+  {
+    kicker: "OUR PRODUCT",
     title: "The Trick Book",
     href: "/work/trick-book",
     label: "TRICK BOOK APP",
     summary:
       "Our own consumer platform for action sports, taken from idea to both app stores to marketing, with AI companions as the flagship feature.",
     facts: ["APP STORE", "GOOGLE PLAY", "3,800+ SPOTS"],
+    image: "/work/trick-book.webp",
+    alt: "thetrickbook.com homepage: your board, your data, your crew",
   },
   {
     kicker: "CLIENT PLATFORM",
@@ -62,11 +85,23 @@ export default function WorkPage() {
         {STUDIES.map((s) => (
           <Link key={s.href} href={s.href} className="group">
             <Blueprint className="grid gap-px bg-divider md:grid-cols-[1.1fr_2fr]">
-              <div className="hatch flex min-h-[180px] items-end p-4">
-                <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
-                  {s.label}
-                </span>
-              </div>
+              {s.image ? (
+                <div className="relative min-h-[180px]">
+                  <Image
+                    src={s.image}
+                    alt={s.alt ?? s.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 35vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+              ) : (
+                <div className="hatch flex min-h-[180px] items-end p-4">
+                  <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
+                    {s.label}
+                  </span>
+                </div>
+              )}
               <div className="flex flex-col justify-between gap-6 bg-ground p-8">
                 <div className="flex flex-col gap-2.5">
                   <div className="font-heading text-[10px] font-semibold tracking-kicker text-steel-700">

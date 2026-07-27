@@ -24,6 +24,7 @@ Key facts:
 
 - [Work](${SITE.url}/work): case studies with receipts
 - [Bluegrass Damage Appraisal](${SITE.url}/work/bluegrass-damage-appraisal): claims platform with three portals on AWS, six months, 5.0 verified review
+- [Helio](${SITE.url}/work/helio): our own industrial IoT product, AI powered machine monitoring for American manufacturers, live at helioiot.com
 - [The Trick Book](${SITE.url}/work/trick-book): our own consumer product, live on both app stores
 - [AI Support Platform](${SITE.url}/work/ai-support-platform): production LangGraph orchestrator with voice, chat and evals
 - [About](${SITE.url}/about): the three people you would work with

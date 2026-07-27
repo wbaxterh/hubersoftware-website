@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Blueprint,
@@ -24,7 +25,15 @@ const TRUSTED_BY = [
   "The Trick Book",
 ];
 
-const WORK = [
+const WORK: Array<{
+  kicker: string;
+  title: string;
+  href: string;
+  label: string;
+  body: string;
+  image?: string;
+  alt?: string;
+}> = [
   {
     kicker: "CLIENT PLATFORM",
     title: "Bluegrass Damage Appraisal",
@@ -34,17 +43,21 @@ const WORK = [
   },
   {
     kicker: "OUR PRODUCT",
+    title: "Helio",
+    href: "/work/helio",
+    label: "HELIO",
+    body: "AI powered machine monitoring for American manufacturers, built and run by us. Every architecture call we recommend to you is one we already live with ourselves, from edge hardware to the models on top.",
+    image: "/work/helio.webp",
+    alt: "helioiot.com homepage: Helio makes machines make sense",
+  },
+  {
+    kicker: "OUR PRODUCT",
     title: "The Trick Book",
     href: "/work/trick-book",
     label: "TRICK BOOK APP",
     body: "A trick progression platform for skateboarders, snowboarders, BMX riders and surfers. Live on the App Store and Google Play, with a spot map of 3,800+ locations and AI companions that know your progression.",
-  },
-  {
-    kicker: "CLIENT PLATFORM",
-    title: "AI Support Platform",
-    href: "/work/ai-support-platform",
-    label: "AI PLATFORM",
-    body: "A production LangGraph orchestrator for a consumer software company. Retrieval over their docs, voice and live chat channels, secure account operations through MCP, and evals that catch quality slips before customers do.",
+    image: "/work/trick-book.webp",
+    alt: "thetrickbook.com homepage: your board, your data, your crew",
   },
 ];
 
@@ -163,11 +176,23 @@ export default function Home() {
         <div className="mt-12 grid gap-7 md:grid-cols-3">
           {WORK.map((w) => (
             <Link key={w.title} href={w.href} className="group flex flex-col gap-4">
-              <Blueprint className="hatch flex aspect-[4/3] items-end p-4">
-                <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
-                  {w.label}
-                </span>
-              </Blueprint>
+              {w.image ? (
+                <Blueprint className="relative aspect-[4/3]">
+                  <Image
+                    src={w.image}
+                    alt={w.alt ?? w.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-top"
+                  />
+                </Blueprint>
+              ) : (
+                <Blueprint className="hatch flex aspect-[4/3] items-end p-4">
+                  <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
+                    {w.label}
+                  </span>
+                </Blueprint>
+              )}
               <div className="flex flex-col gap-2">
                 <div className="font-heading text-[10px] font-semibold tracking-kicker text-steel-700">
                   {w.kicker}

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Blueprint, Kicker } from "@/components/brand/datum";
 
@@ -11,10 +12,19 @@ export const metadata: Metadata = {
 
 const PRODUCTS = [
   {
+    title: "Helio",
+    status: "LIVE",
+    href: "https://helioiot.com",
+    image: "/work/helio.webp",
+    alt: "helioiot.com homepage: Helio makes machines make sense",
+    body: "AI powered machine monitoring for American manufacturers. Intelligence on top of the equipment itself: extend machine life, cut unplanned downtime, and catch failures before they cost a shift.",
+  },
+  {
     title: "The Trick Book",
     status: "LIVE",
     href: "https://thetrickbook.com",
-    label: "THE TRICK BOOK SCREENS",
+    image: "/work/trick-book.webp",
+    alt: "thetrickbook.com homepage: your board, your data, your crew",
     body: "A trick progression platform for skateboarders, snowboarders, BMX riders and surfers. React Native apps on both stores, a Next.js web app, and an Express backend on AWS, with a 3,800+ spot map and AI companions.",
   },
 ];
@@ -80,10 +90,14 @@ export default function ToolsPage() {
         <div className="grid gap-7 md:grid-cols-2">
           {PRODUCTS.map((p) => (
             <Blueprint key={p.title} className="flex flex-col bg-ground">
-              <div className="hatch flex aspect-[16/10] items-end border-b border-divider p-4">
-                <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
-                  {p.label}
-                </span>
+              <div className="relative aspect-[16/10] border-b border-divider">
+                <Image
+                  src={p.image}
+                  alt={p.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-top"
+                />
               </div>
               <div className="flex flex-col gap-2.5 p-7">
                 <div className="flex items-center justify-between gap-4">

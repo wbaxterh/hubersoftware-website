@@ -4,54 +4,47 @@ import { Blueprint, Kicker, PrimaryCta, Tag } from "@/components/brand/datum";
 import { JsonLd, breadcrumbs } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "The Trick Book Case Study | Our Own Product, End to End",
+  title: "Helio Case Study | AI Machine Monitoring, Our Own Product",
   description:
-    "The Trick Book is our proof that we ship whole products: React Native apps on both stores, a Next.js web app, an Express backend on AWS, a 3,800+ spot map, and AI companions with persistent memory.",
-  alternates: { canonical: "/work/trick-book" },
+    "Helio is our industrial IoT product: AI powered machine monitoring for American manufacturers. Hardware in the plant, intelligence on top, unplanned downtime caught before it costs a shift.",
+  alternates: { canonical: "/work/helio" },
 };
 
 const FACTS = [
-  ["ROLE", "Founder, designer, engineer"],
-  ["DISTRIBUTION", "App Store and Google Play"],
-  ["SCALE", "3,800+ mapped spots"],
-  ["MODEL", "Freemium with Stripe"],
+  ["ROLE", "Founders and builders"],
+  ["DOMAIN", "Industrial IoT"],
+  ["BUYERS", "American manufacturers"],
+  ["STATUS", "Live, beta program open"],
 ];
 
-const STACK = [
-  "REACT NATIVE",
-  "NEXT.JS",
-  "EXPRESS",
-  "MONGODB",
-  "AWS",
-  "STRIPE",
-];
+const STACK = ["IOT SENSORS", "AWS IOT", "AI MODELS", "REAL TIME DATA"];
 
-export default function TrickBookCaseStudy() {
+export default function HelioCaseStudy() {
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-16 px-5 py-20 md:px-10 md:py-24">
       <JsonLd
         data={breadcrumbs([
           { name: "Work", path: "/work" },
-          { name: "The Trick Book", path: "/work/trick-book" },
+          { name: "Helio", path: "/work/helio" },
         ])}
       />
       <div className="flex flex-col gap-6">
         <Kicker className="tracking-label">Case study / Our product</Kicker>
         <h1 className="font-heading text-5xl font-semibold leading-[1.05] md:text-6xl">
-          The product we run ourselves.
+          Helio makes machines make sense.
         </h1>
         <p className="max-w-2xl text-lg leading-[1.7] text-neutral-700">
-          The Trick Book is a trick progression platform for skateboarders,
-          snowboarders, BMX riders and surfers. We built it, we operate it, we
-          market it. Every architecture call we recommend to clients is one we
-          already live with here.
+          Helio is our industrial IoT product: AI powered machine monitoring
+          for American manufacturers. Sensors on the equipment, intelligence
+          on top, and answers a plant manager can act on before a failure
+          costs a shift.
         </p>
       </div>
 
       <Blueprint className="relative aspect-[16/10]">
         <Image
-          src="/work/trick-book.webp"
-          alt="thetrickbook.com homepage: your board, your data, your crew"
+          src="/work/helio.webp"
+          alt="helioiot.com homepage: Helio makes machines make sense"
           fill
           sizes="(max-width: 896px) 100vw, 896px"
           className="object-cover object-top"
@@ -76,24 +69,11 @@ export default function TrickBookCaseStudy() {
             What it is
           </h2>
           <p>
-            A structured trick encyclopedia, progression tracking, a GPS spot
-            map with more than 3,800 locations, real time messaging, media
-            feeds with CDN streaming, and freemium subscriptions through
-            Stripe. Live on the App Store and Google Play as a React Native
-            app, with a Next.js web app and an Express plus MongoDB backend
-            on AWS.
-          </p>
-        </div>
-        <div>
-          <h2 className="mb-3 font-heading text-3xl font-semibold text-ink">
-            The AI part
-          </h2>
-          <p>
-            The flagship feature is companions: LLM powered characters with
-            nine function calling tools, persistent relationship memory, and
-            awareness of each rider&apos;s progression. The next release puts
-            them on an interactive 3D stage where they physically demonstrate
-            tricks with orbitable cameras and slow motion playback.
+            Machine downtime is the most expensive silence in manufacturing.
+            Helio puts monitoring on the equipment and AI over the data to
+            extend machine life, cut unplanned downtime, and catch failures
+            while they are still maintenance instead of emergencies. It is
+            live at helioiot.com with a beta program open for manufacturers.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {STACK.map((t) => (
@@ -106,23 +86,23 @@ export default function TrickBookCaseStudy() {
             Why it matters to your project
           </h2>
           <p>
-            A dev shop that has never operated its own product learns your
-            hard lessons on your budget. We have shipped through both app
-            review processes, run production infrastructure under real
-            traffic, and marketed a consumer product with our own money. That
-            experience is in the room on every client engagement.
+            Helio is the hardest kind of product to ship: physical hardware,
+            real time data pipelines, AI that has to be right, and buyers who
+            do not forgive flaky software. Building and operating it ourselves
+            is the reason we can walk into an IoT or AI engagement already
+            knowing where the bodies are buried.
           </p>
         </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-6 border-t border-divider pt-10">
         <a
-          href="https://thetrickbook.com"
+          href="https://helioiot.com"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[15px] text-steel-700 underline underline-offset-4 hover:text-steel-800"
         >
-          Visit thetrickbook.com
+          Visit helioiot.com
         </a>
         <PrimaryCta href="/contact" className="ml-auto">
           Book a call

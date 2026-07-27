@@ -25,7 +25,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-divider bg-ground/90 backdrop-blur-md">
       <div className="mx-auto flex h-[74px] max-w-6xl items-center justify-between gap-8 px-5 md:px-10">
         <Link href="/" className="flex items-center" aria-label="Huber Software home">
-          <HuberLogo size={28} />
+          <HuberLogo size={38} />
         </Link>
 
         {/* Desktop navigation */}
