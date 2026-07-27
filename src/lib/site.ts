@@ -8,17 +8,17 @@ export const SITE = {
   foundingDate: "2025-08-04",
   tagline: "Enterprise grade software for teams that are not enterprises yet.",
   description:
-    "Huber Software is a three person product team in Winston-Salem, North Carolina. Wes builds the software, Kat builds the brand, Tripp builds the pipeline. Product engineering, AI engineering, and white label development for agencies and founders.",
+    "Huber Software is a three person product team in Long Beach, California. Wes builds the software, Kat builds the brand, Tripp builds the pipeline. Product engineering, AI engineering, and white label development for agencies and founders.",
   email: "wes@hubersoftware.com",
   partnershipsEmail: "tripp@hubersoftware.com",
   address: {
-    street: "530 N Patterson Ave Unit 465",
-    city: "Winston-Salem",
-    region: "NC",
-    postalCode: "27101",
+    street: "1516 East 2nd Street, #2",
+    city: "Long Beach",
+    region: "CA",
+    postalCode: "90802",
     country: "US",
   },
-  locationLine: "Winston-Salem, North Carolina",
+  locationLine: "Long Beach, California",
   sameAs: [
     "https://github.com/wbaxterh",
     "https://www.upwork.com/freelancers/~01387050d017e0878f",

@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: `${SITE.name} | Enterprise Grade Software for Teams That Are Not Enterprises Yet`,
   description:
-    "A three person product team. Wes builds the software, Kat builds the brand, Tripp builds the pipeline. Product engineering, AI engineering, and white label development from Winston-Salem, North Carolina.",
+    "A three person product team. Wes builds the software, Kat builds the brand, Tripp builds the pipeline. Product engineering, AI engineering, and white label development from Long Beach, California.",
   alternates: { canonical: "/" },
 };
 

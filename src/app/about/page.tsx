@@ -4,7 +4,7 @@ import { Blueprint, Kicker } from "@/components/brand/datum";
 export const metadata: Metadata = {
   title: "About | A Family Shop With an Enterprise Habit",
   description:
-    "Huber Software is Wes, Kat and Tripp Huber: engineering, brand and sales as one accountable team in Winston-Salem, North Carolina. Here is how an engagement runs.",
+    "Huber Software is Wes, Kat and Tripp Huber: engineering, brand and sales as one accountable team in Long Beach, California. Here is how an engagement runs.",
   alternates: { canonical: "/about" },
 };
 
