@@ -68,8 +68,9 @@ export function HuberLogo({
         <span
           style={{
             fontFamily: "var(--font-heading), system-ui, sans-serif",
-            fontSize: size * 0.2375,
-            letterSpacing: "0.34em",
+            fontSize: size * 0.32,
+            fontWeight: 500,
+            letterSpacing: "0.22em",
             lineHeight: 1,
             color: c.sub,
           }}

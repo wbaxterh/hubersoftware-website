@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Blueprint, Kicker, PrimaryCta, Tag } from "@/components/brand/datum";
 import { JsonLd, breadcrumbs } from "@/components/seo/json-ld";
 import { UPWORK_PROFILE_URL } from "@/lib/stats";
@@ -41,6 +42,17 @@ export default function BluegrassCaseStudy() {
           emailing spreadsheets at each other.
         </p>
       </div>
+
+      <Blueprint className="relative aspect-[16/10]">
+        <Image
+          src="/work/bluegrass.webp"
+          alt="Bluegrass Damage Appraisal admin portal: claims and revenue dashboard"
+          fill
+          sizes="(max-width: 896px) 100vw, 896px"
+          className="object-cover object-top"
+          priority
+        />
+      </Blueprint>
 
       {/* Facts strip */}
       <Blueprint className="grid gap-px bg-divider sm:grid-cols-2 lg:grid-cols-4">

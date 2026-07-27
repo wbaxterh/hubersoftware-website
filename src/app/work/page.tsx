@@ -29,6 +29,8 @@ const STUDIES: Array<{
     summary:
       "A claim management platform: one backend API, three user portals, AWS infrastructure and CI/CD, shipped to production in six months.",
     facts: ["6 MONTHS", "3 PORTALS", "5.0 REVIEW"],
+    image: "/work/bluegrass.webp",
+    alt: "Bluegrass Damage Appraisal admin portal: claims and revenue dashboard",
   },
   {
     kicker: "OUR PRODUCT",

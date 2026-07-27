@@ -40,6 +40,8 @@ const WORK: Array<{
     href: "/work/bluegrass-damage-appraisal",
     label: "CLAIMS PLATFORM",
     body: "A claim management platform built over six months. One backend API, three separate user portals for appraisers, adjusters and clients, AWS infrastructure and CI/CD pipelines that let us ship the same day a problem shows up.",
+    image: "/work/bluegrass.webp",
+    alt: "Bluegrass Damage Appraisal admin portal: claims and revenue dashboard",
   },
   {
     kicker: "OUR PRODUCT",
