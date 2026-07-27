@@ -110,11 +110,36 @@ export default function BluegrassCaseStudy() {
           </h2>
           <p>
             Six months from empty repo to a production platform the whole
-            operation runs on, delivered on a fixed price. The engagement is
-            public on Upwork with a 5.0 rating and a completed contract, so
-            you do not have to take our word for any of this.
+            operation runs on, delivered on a fixed price. It is live today
+            at app.bluegrass.claims, and the engagement is public on Upwork
+            with a 5.0 rating and a completed contract, so you do not have to
+            take our word for any of this.
           </p>
         </div>
+
+        <figure className="flex flex-col gap-3">
+          <Blueprint className="relative aspect-[16/10]">
+            <Image
+              src="/work/bluegrass-live.webp"
+              alt="The production sign in page at app.bluegrass.claims"
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover object-top"
+            />
+          </Blueprint>
+          <figcaption className="text-[13px] text-neutral-600">
+            The production app, live at{" "}
+            <a
+              href="https://app.bluegrass.claims"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-steel-700 underline underline-offset-4"
+            >
+              app.bluegrass.claims
+            </a>
+            .
+          </figcaption>
+        </figure>
       </div>
 
       {/* The review, verbatim */}
