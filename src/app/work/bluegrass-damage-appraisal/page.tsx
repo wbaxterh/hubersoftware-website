@@ -109,11 +109,13 @@ export default function BluegrassCaseStudy() {
             The impact
           </h2>
           <p>
-            Six months from empty repo to a production platform the whole
-            operation runs on, delivered on a fixed price. It is live today
-            at app.bluegrass.claims, and the engagement is public on Upwork
-            with a 5.0 rating and a completed contract, so you do not have to
-            take our word for any of this.
+            Six months from empty repo to a production platform processing
+            real claims, delivered on a fixed price. At handoff we
+            transferred both repositories with 300 commits of history and a
+            full delivery summary, and the client&apos;s team is building on
+            that codebase today. The engagement is public on Upwork with a
+            5.0 rating and a completed contract, so you do not have to take
+            our word for any of this.
           </p>
         </div>
 
@@ -128,16 +130,7 @@ export default function BluegrassCaseStudy() {
             />
           </Blueprint>
           <figcaption className="text-[13px] text-neutral-600">
-            The production app, live at{" "}
-            <a
-              href="https://app.bluegrass.claims"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-steel-700 underline underline-offset-4"
-            >
-              app.bluegrass.claims
-            </a>
-            .
+            The production sign in at app.bluegrass.claims.
           </figcaption>
         </figure>
       </div>
