@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Blueprint, Kicker } from "@/components/brand/datum";
 
 export const metadata: Metadata = {
@@ -71,6 +72,20 @@ export default function AboutPage() {
           <h1 className="font-heading text-5xl font-semibold leading-[1.05] md:text-6xl">
             A family shop with an enterprise habit.
           </h1>
+          <figure className="mt-4 flex flex-col gap-3">
+            <Blueprint className="relative aspect-[3/2] bg-neutral-100">
+              <Image
+                src="/about/family-house.webp"
+                alt="Pencil sketch of the house the Hubers grew up in"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </Blueprint>
+            <figcaption className="font-heading text-[10.5px] tracking-kicker text-neutral-600">
+              THE HOUSE WE GREW UP IN
+            </figcaption>
+          </figure>
         </div>
         <div className="flex flex-col gap-5 text-[17px] leading-[1.75] text-neutral-700 lg:pt-12">
           <p>
