@@ -37,7 +37,7 @@ const TEAM = [
     name: "Wes Huber",
     role: "FOUNDER, SOFTWARE AND AI",
     body: "Software engineer, product manager and AI engineer. Ten years of production work across web, mobile and blockchain. Rated five stars by clients on every platform engagement.",
-    photoLabel: "PHOTO OF WES",
+    image: "/team/wes.webp",
     links: [
       { label: "GitHub", href: "https://github.com/wbaxterh" },
       {
@@ -50,14 +50,14 @@ const TEAM = [
     name: "Kathleen Huber",
     role: "BRAND AND MARKETING",
     body: "Positioning, brand systems and go to market. Kat writes the words your customers read and builds the campaigns that get them there.",
-    photoLabel: "PHOTO OF KAT",
+    image: "/team/kat.webp",
     links: [],
   },
   {
     name: "Tripp Huber",
     role: "PARTNERSHIPS AND SALES",
     body: "Channel partnerships, reseller relationships and direct sales. Tripp is why several of our builds had customers waiting on day one.",
-    photoLabel: "PHOTO OF TRIPP",
+    image: "/team/tripp.webp",
     links: [],
   },
 ];
@@ -133,10 +133,16 @@ export default function AboutPage() {
       <div className="grid gap-9 sm:grid-cols-2 lg:grid-cols-3">
         {TEAM.map((m) => (
           <div key={m.name} className="flex flex-col gap-4">
-            <Blueprint className="hatch flex aspect-[4/5] items-end p-4">
-              <span className="font-heading text-[10px] tracking-wordmark text-neutral-600">
-                {m.photoLabel}
-              </span>
+            <Blueprint className="relative aspect-[4/5]">
+              <div className="duotone absolute inset-0">
+                <Image
+                  src={m.image}
+                  alt={`Portrait of ${m.name}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
             </Blueprint>
             <div className="flex flex-col gap-1.5">
               <div className="font-heading text-2xl">{m.name}</div>

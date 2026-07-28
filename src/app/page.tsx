@@ -40,8 +40,8 @@ const WORK: Array<{
     href: "/work/bluegrass-damage-appraisal",
     label: "CLAIMS PLATFORM",
     body: "A claim management platform built over six months. One backend API, three separate user portals for appraisers, adjusters and clients, AWS infrastructure and CI/CD pipelines that let us ship the same day a problem shows up.",
-    image: "/work/bluegrass.webp",
-    alt: "Bluegrass Damage Appraisal admin portal: claims and revenue dashboard",
+    image: "/work/bluegrass-claims.webp",
+    alt: "Bluegrass Damage Appraisal admin portal: the claims management table",
   },
   {
     kicker: "OUR PRODUCT",
@@ -68,19 +68,19 @@ const TEAM = [
     name: "Wes Huber",
     role: "FOUNDER, SOFTWARE AND AI",
     body: "Formally trained software engineer, product manager and AI engineer. Ten years of taking things from a sketch to a production platform other people depend on. He does the architecture, writes the code and owns the deploy.",
-    photoLabel: "PHOTO OF WES",
+    image: "/team/wes.webp",
   },
   {
     name: "Kathleen Huber",
     role: "BRAND AND MARKETING",
     body: "Kat makes sure the thing we build is something people understand and want. Positioning, naming, brand system, launch copy and the campaigns after launch.",
-    photoLabel: "PHOTO OF KAT",
+    image: "/team/kat.webp",
   },
   {
     name: "Tripp Huber",
     role: "PARTNERSHIPS AND SALES",
     body: "Tripp finds the partners and the customers. If your product needs distribution as much as it needs code, this is the part most engineering firms cannot help you with.",
-    photoLabel: "PHOTO OF TRIPP",
+    image: "/team/tripp.webp",
   },
 ];
 
@@ -225,13 +225,16 @@ export default function Home() {
           <div className="mt-14 grid gap-9 sm:grid-cols-2 lg:grid-cols-3">
             {TEAM.map((m) => (
               <div key={m.name} className="flex flex-col gap-4">
-                <Blueprint
-                  light
-                  className="hatch-dark flex aspect-square items-end border-ground/20 p-4"
-                >
-                  <span className="font-heading text-[10px] tracking-wordmark text-neutral-500">
-                    {m.photoLabel}
-                  </span>
+                <Blueprint light className="relative aspect-square border-ground/20">
+                  <div className="duotone absolute inset-0">
+                    <Image
+                      src={m.image}
+                      alt={`Portrait of ${m.name}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
                 </Blueprint>
                 <div className="flex flex-col gap-2">
                   <h3 className="font-heading text-2xl">{m.name}</h3>

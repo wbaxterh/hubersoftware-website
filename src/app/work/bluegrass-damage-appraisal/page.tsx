@@ -45,8 +45,8 @@ export default function BluegrassCaseStudy() {
 
       <Blueprint className="relative aspect-[16/10]">
         <Image
-          src="/work/bluegrass.webp"
-          alt="Bluegrass Damage Appraisal admin portal: claims and revenue dashboard"
+          src="/work/bluegrass-claims.webp"
+          alt="Bluegrass Damage Appraisal admin portal: the claims management table"
           fill
           sizes="(max-width: 896px) 100vw, 896px"
           className="object-cover object-top"
