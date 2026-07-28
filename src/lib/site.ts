@@ -26,5 +26,9 @@ export const SITE = {
   ],
   // Optional integrations, wired via env so no code change is needed later.
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
-  formEndpoint: process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? "",
+  // Lambda (hubersoftware-contact-form) behind the shared HTTP API; sends
+  // via SES from noreply@hubersoftware.com. Source: infra/contact-form/.
+  formEndpoint:
+    process.env.NEXT_PUBLIC_FORM_ENDPOINT ??
+    "https://api.hubersoftware.com/contact/submit",
 } as const;

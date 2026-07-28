@@ -22,17 +22,6 @@ const STUDIES: Array<{
   alt?: string;
 }> = [
   {
-    kicker: "CLIENT PLATFORM",
-    title: "Bluegrass Damage Appraisal",
-    href: "/work/bluegrass-damage-appraisal",
-    label: "CLAIMS PLATFORM",
-    summary:
-      "A claim management platform: one backend API, three user portals, AWS infrastructure and CI/CD, shipped to production in six months.",
-    facts: ["6 MONTHS", "3 PORTALS", "5.0 REVIEW"],
-    image: "/work/bluegrass-claims.webp",
-    alt: "Bluegrass Damage Appraisal admin portal: the claims management table",
-  },
-  {
     kicker: "OUR PRODUCT",
     title: "Helio",
     href: "/work/helio",
@@ -53,6 +42,17 @@ const STUDIES: Array<{
     facts: ["APP STORE", "GOOGLE PLAY", "3,800+ SPOTS"],
     image: "/work/trick-book.webp",
     alt: "thetrickbook.com homepage: your board, your data, your crew",
+  },
+  {
+    kicker: "CLIENT PLATFORM",
+    title: "Bluegrass Damage Appraisal",
+    href: "/work/bluegrass-damage-appraisal",
+    label: "CLAIMS PLATFORM",
+    summary:
+      "A claim management platform: one backend API, three user portals, AWS infrastructure and CI/CD, shipped to production in six months.",
+    facts: ["6 MONTHS", "3 PORTALS", "5.0 REVIEW"],
+    image: "/work/bluegrass-claims.webp",
+    alt: "Bluegrass Damage Appraisal admin portal: the claims management table",
   },
   {
     kicker: "CLIENT PLATFORM",

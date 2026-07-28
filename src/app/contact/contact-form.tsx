@@ -17,6 +17,7 @@ export function ContactForm() {
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
   const [picked, setPicked] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
@@ -46,7 +47,7 @@ export function ContactForm() {
         const res = await fetch(SITE.formEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, company, email, needs: picked, message }),
+          body: JSON.stringify({ name, company, email, needs: picked, message, website }),
         });
         if (!res.ok) throw new Error(`status ${res.status}`);
         setStatus("sent");
@@ -80,6 +81,17 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      {/* Honeypot: invisible to humans, bots fill it and get silently dropped. */}
+      <input
+        type="text"
+        name="website"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+      />
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="flex flex-col gap-2.5">
           <span className="font-heading text-[10px] font-semibold tracking-kicker text-neutral-600">

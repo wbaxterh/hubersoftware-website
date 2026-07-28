@@ -35,15 +35,6 @@ const WORK: Array<{
   alt?: string;
 }> = [
   {
-    kicker: "CLIENT PLATFORM",
-    title: "Bluegrass Damage Appraisal",
-    href: "/work/bluegrass-damage-appraisal",
-    label: "CLAIMS PLATFORM",
-    body: "A claim management platform built over six months. One backend API, three separate user portals for appraisers, adjusters and clients, AWS infrastructure and CI/CD pipelines that let us ship the same day a problem shows up.",
-    image: "/work/bluegrass-claims.webp",
-    alt: "Bluegrass Damage Appraisal admin portal: the claims management table",
-  },
-  {
     kicker: "OUR PRODUCT",
     title: "Helio",
     href: "/work/helio",
@@ -60,6 +51,15 @@ const WORK: Array<{
     body: "A trick progression platform for skateboarders, snowboarders, BMX riders and surfers. Live on the App Store and Google Play, with a spot map of 3,800+ locations and AI companions that know your progression.",
     image: "/work/trick-book.webp",
     alt: "thetrickbook.com homepage: your board, your data, your crew",
+  },
+  {
+    kicker: "CLIENT PLATFORM",
+    title: "Bluegrass Damage Appraisal",
+    href: "/work/bluegrass-damage-appraisal",
+    label: "CLAIMS PLATFORM",
+    body: "A claim management platform built over six months. One backend API, three separate user portals for appraisers, adjusters and clients, AWS infrastructure and CI/CD pipelines that let us ship the same day a problem shows up.",
+    image: "/work/bluegrass-claims.webp",
+    alt: "Bluegrass Damage Appraisal admin portal: the claims management table",
   },
 ];
 
@@ -253,7 +253,7 @@ export default function Home() {
 
       {/* Reviews */}
       <section className="mx-auto w-full max-w-6xl px-5 py-20 md:px-10 md:py-24">
-        <SectionHeader kicker="In their words" title="What clients actually said." />
+        <SectionHeader kicker="In their words" title="What clients said." />
         <Blueprint className="mt-12 grid gap-px bg-divider md:grid-cols-3">
           {REVIEWS.map((r) => (
             <div
