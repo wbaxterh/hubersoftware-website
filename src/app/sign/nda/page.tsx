@@ -31,6 +31,7 @@ function GatedNdaContent() {
   const [submitError, setSubmitError] = useState("");
   const [signatureId, setSignatureId] = useState("");
   const [downloadUrl, setDownloadUrl] = useState("");
+  const [emailedToSigner, setEmailedToSigner] = useState(false);
 
   useEffect(() => {
     if (!inviteId) {
@@ -100,6 +101,7 @@ function GatedNdaContent() {
       if (data.success) {
         setSignatureId(data.signatureId || "");
         setDownloadUrl(data.downloadUrl || "");
+      setEmailedToSigner(data.emailStatus === "sent");
         setStep("success");
       } else {
         setSubmitError(data.error || data.message || "Failed to sign");
@@ -120,8 +122,9 @@ function GatedNdaContent() {
           </div>
           <h2 className="font-heading text-2xl font-semibold mb-2">NDA signed</h2>
           <p className="text-neutral-700 mb-6">
-            The agreement is executed. Download your copy below. A copy has
-            also been emailed to you and to Huber Software.
+            {emailedToSigner
+              ? "The agreement is executed. Download your copy below. A copy has also been emailed to you and to Huber Software."
+              : "The agreement is executed. Download your copy below and keep it for your records. Huber Software has received a copy."}
           </p>
           {downloadUrl && (
             <a

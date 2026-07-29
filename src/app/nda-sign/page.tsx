@@ -38,6 +38,7 @@ export default function NDASignPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [signatureId, setSignatureId] = useState("");
   const [downloadUrl, setDownloadUrl] = useState("");
+  const [emailedToSigner, setEmailedToSigner] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -91,6 +92,7 @@ export default function NDASignPage() {
 
       setSignatureId(data.signatureId);
       setDownloadUrl(data.downloadUrl || "");
+      setEmailedToSigner(data.emailStatus === "sent");
       setSubmitStatus("success");
     } catch (error) {
       console.error("NDA submission error:", error);
@@ -118,8 +120,9 @@ export default function NDASignPage() {
           </div>
           <h2 className="font-heading text-2xl font-semibold mb-2">NDA signed</h2>
           <p className="text-neutral-700 mb-6">
-            The agreement is executed. Download your copy below. A copy has
-            also been emailed to you and to Huber Software.
+            {emailedToSigner
+              ? "The agreement is executed. Download your copy below. A copy has also been emailed to you and to Huber Software."
+              : "The agreement is executed. Download your copy below and keep it for your records. Huber Software has received a copy."}
           </p>
           {downloadUrl && (
             <a
